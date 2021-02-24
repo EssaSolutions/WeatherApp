@@ -14,7 +14,7 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Weather Application");
-        root.setStyle("-fx-background-color: #858df1;");
+        root.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #E0FFFF, #858df1);");
         primaryStage.getIcons().add(new Image("/images/weatherico.png"));
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
