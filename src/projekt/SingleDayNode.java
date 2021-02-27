@@ -14,11 +14,12 @@ public class SingleDayNode {
     public ImageView imageView;
     public Label date;
     public Label temp;
+    public Label hour;
 
     public SingleDayNode(SingleDay day){
         pane = new Pane();
         pane.setMinSize(110, 100);
-        imageView = new ImageView("/images/SunWhite.png");
+        imageView = new ImageView(day.getImageURL());
         imageView.setFitHeight(50);
         imageView.setFitWidth(50);
         imageView.relocate(10, 10);
@@ -30,7 +31,11 @@ public class SingleDayNode {
         date.relocate(10, 70);
         date.setTextFill(Color.web("#ffffff"));
         date.setFont(new Font("Arial", 15));
-        pane.getChildren().addAll(imageView, temp, date);
+        hour = new Label(day.hourToString());
+        hour.relocate(60, 70);
+        hour.setTextFill(Color.web("#ffffff"));
+        hour.setFont(new Font("Arial", 15));
+        pane.getChildren().addAll(imageView, temp, date, hour);
         pane.setStyle("-fx-border-color: white");
     }
 

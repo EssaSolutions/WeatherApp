@@ -34,19 +34,12 @@ public class Controller {
         button1.setText(text);
     }
 
-
     public void initialize()
     {
-
-        
-
-
-
-
-        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 20)).getPane());
-        days.getChildren().add(new SingleDayNode(new SingleDay(4, 16, 19)).getPane());
-        days.getChildren().add(new SingleDayNode(new SingleDay(2, 17, 8)).getPane());
-        days.getChildren().add(new SingleDayNode(new SingleDay(3, 9, -7)).getPane());
+        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 17, 5)).getPane());
+        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 19, 12)).getPane());
+        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 18, 18)).getPane());
+        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 15, 22)).getPane());
     }
 
 }
