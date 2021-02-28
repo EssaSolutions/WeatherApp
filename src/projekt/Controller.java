@@ -38,7 +38,7 @@ public class Controller {
     public void initialize() throws Exception
     {
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
-        singleDays.add(new SingleDay(5, 20, 17, 5));
+        singleDays.add(new SingleDay(5, 20, -17, 5));
         singleDays.add(new SingleDay(5, 20, 19, 12));
         singleDays.add(new SingleDay(5, 20, 18, 18));
         singleDays.add(new SingleDay(5, 20, 15, 22));

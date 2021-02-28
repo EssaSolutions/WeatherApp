@@ -21,8 +21,8 @@ public class SingleDay {
     }
 
     public String tempToString(){
-        return Integer.toString(temperature) + "\u2103";
-    }
+        return Integer.toString(temperature) + "°C";
+    } //
 
     public String dateToString(){
         String string = "";
