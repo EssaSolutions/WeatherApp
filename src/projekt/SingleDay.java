@@ -39,9 +39,9 @@ public class SingleDay {
 
     private void giveURL(){
         if(this.hour > 6 && this.hour < 20){
-            this.imageURL = "/images/SunWhite.png";
+            this.imageURL = "/images/SunWhite100px.png";
         } else {
-            this.imageURL = "/images/MoonWhite.png";
+            this.imageURL = "/images/MoonWhite100px.png";
         }
     }
 
