@@ -1,45 +1,41 @@
 package projekt;
 
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class SingleDayNode {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SingleDayNode implements Initializable {
 
     public SingleDay day;
-    public Pane pane;
-    public ImageView imageView;
-    public Label date;
-    public Label temp;
-    public Label hour;
+    @FXML public Pane pane;
+    @FXML public ImageView imageView;
+    @FXML public Label date;
+    @FXML public Label temp;
+    @FXML public Label hour;
 
-    public SingleDayNode(SingleDay day){
-        pane = new Pane();
-        pane.setMinSize(110, 100);
-        imageView = new ImageView(day.getImageURL());
-        imageView.setFitHeight(50);
-        imageView.setFitWidth(50);
-        imageView.relocate(10, 10);
-        temp = new Label(day.tempToString());
-        temp.relocate(60, 35);
-        temp.setTextFill(Color.web("#ffffff"));
-        temp.setFont(new Font("Arial", 20));
-        date = new Label(day.dateToString());
-        date.relocate(10, 70);
-        date.setTextFill(Color.web("#ffffff"));
-        date.setFont(new Font("Arial", 15));
-        hour = new Label(day.hourToString());
-        hour.relocate(60, 70);
-        hour.setTextFill(Color.web("#ffffff"));
-        hour.setFont(new Font("Arial", 15));
-        pane.getChildren().addAll(imageView, temp, date, hour);
-        pane.setStyle("-fx-border-color: white");
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+
     }
 
-    public Pane getPane(){
-        return pane;
+    public void setDay(SingleDay day){
+        this.day = day;
+        imageView.setImage(new Image(day.getImageURL()));
+        date.setText(day.dateToString());
+        hour.setText(day.hourToString());
+        hour.setAlignment(Pos.CENTER_RIGHT);
+        temp.setText(day.tempToString());
+        temp.setAlignment(Pos.CENTER_RIGHT);
+        pane.setStyle("-fx-border-color: white");
     }
 }

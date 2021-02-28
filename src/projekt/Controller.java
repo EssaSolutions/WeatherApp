@@ -2,12 +2,13 @@ package projekt;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -34,12 +35,22 @@ public class Controller {
         button1.setText(text);
     }
 
-    public void initialize()
+    public void initialize() throws Exception
     {
-        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 17, 5)).getPane());
-        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 19, 12)).getPane());
-        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 18, 18)).getPane());
-        days.getChildren().add(new SingleDayNode(new SingleDay(5, 20, 15, 22)).getPane());
+        ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
+        singleDays.add(new SingleDay(5, 20, 17, 5));
+        singleDays.add(new SingleDay(5, 20, 19, 12));
+        singleDays.add(new SingleDay(5, 20, 18, 18));
+        singleDays.add(new SingleDay(5, 20, 15, 22));
+
+        for(int i = 0; i < singleDays.size(); i++){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
+            Pane pane = loader.load();
+            SingleDay day = singleDays.get(i);
+            SingleDayNode controller = loader.getController();
+            controller.setDay(day);
+            days.getChildren().add(pane);
+        }
     }
 
 }

@@ -41,7 +41,7 @@ public class SingleDay {
         if(this.hour > 6 && this.hour < 20){
             this.imageURL = "/images/SunWhite.png";
         } else {
-            this.imageURL = "/images/MoonWhite.jpg";
+            this.imageURL = "/images/MoonWhite.png";
         }
     }
 
