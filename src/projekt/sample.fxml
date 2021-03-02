@@ -5,7 +5,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Controller">
    <children>
-      <TextField fx:id="CityName" alignment="CENTER" focusTraversable="false" layoutX="326.0" layoutY="275.0" promptText="Enter the city name" />
+      <TextField fx:id="CityText" alignment="CENTER" focusTraversable="false" layoutX="326.0" layoutY="275.0" prefHeight="25.0" prefWidth="230.0" promptText="Enter the city name and press Enter" />
       <HBox fx:id="days" layoutY="332.0" prefHeight="200.0" prefWidth="800.0" />
       <Button fx:id="button1" layoutX="374.0" layoutY="161.0" mnemonicParsing="false" text="Do dwa" />
       <ChoiceBox fx:id="CityBox" layoutX="263.0" layoutY="52.0" prefHeight="17.0" prefWidth="89.0" />

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 public class Controller {
 
+
+
     @FXML
     Label tekst;
 
@@ -23,7 +25,7 @@ public class Controller {
     HBox days;
 
     @FXML
-    TextField CityName;
+    TextField CityText;
 
     @FXML
     ChoiceBox <String> CityBox;
@@ -52,6 +54,7 @@ public class Controller {
     public void initialize() throws Exception
     {
 
+        ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         CityBox.getItems().addAll("Warsaw","Breslau","Danzig");
         LanguageBox.getItems().addAll("Polski","English");
         LanguageBox.setValue("English");
@@ -61,59 +64,92 @@ public class Controller {
             {
 
 
-                CityName.setPromptText("Wybierz miasto");
+                CityText.setPromptText("Wybierz miasto i wcisnij Enter");
 
             }
             else
             {
-                CityName.setPromptText("Enter the city name");
+                CityText.setPromptText("Enter the city name and press Enter");
             }
 
         });
+        CityText.setOnAction((actionEvent -> {
 
-        ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
+                if (CityText.getText().equals("Warsaw")) {
+                    singleDays.add(new SingleDay(5, 20, 17, 5));
+                    singleDays.add(new SingleDay(5, 20, 19, 12));
+                    singleDays.add(new SingleDay(5, 20, 18, 18));
+                    singleDays.add(new SingleDay(5, 20, 15, 22));
+
+
+                } else if (CityText.getText().equals("Breslau")) {
+                    singleDays.add(new SingleDay(6, 21, 10, 5));
+                    singleDays.add(new SingleDay(6, 21, 11, 12));
+                    singleDays.add(new SingleDay(6, 21, 12, 18));
+                    singleDays.add(new SingleDay(6, 21, 13, 22));
+
+                } else if (CityText.getText().equals("Danzig")) {
+                    singleDays.add(new SingleDay(7, 22, 23, 5));
+                    singleDays.add(new SingleDay(7, 22, 24, 12));
+                    singleDays.add(new SingleDay(7, 22, 25, 18));
+                    singleDays.add(new SingleDay(7, 22, 26, 22));
+
+                }
+                for (int i = 0; i < singleDays.size(); i++) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
+                    Pane pane = null;
+                    try {
+                        pane = loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    SingleDay day = singleDays.get(i);
+                    SingleDayNode controller = loader.getController();
+                    controller.setDay(day);
+                    days.getChildren().add(pane);
+                }
+
+
+        }));
+
+
         CityBox.setOnAction((event) ->
         {
-            if (((String) CityBox.getValue()).equals("Warsaw"))
-            {
-                singleDays.add(new SingleDay(5, 20, 17, 5));
-                singleDays.add(new SingleDay(5, 20, 19, 12));
-                singleDays.add(new SingleDay(5, 20, 18, 18));
-                singleDays.add(new SingleDay(5, 20, 15, 22));
+
+                if (((String) CityBox.getValue()).equals("Warsaw")) {
+                    singleDays.add(new SingleDay(5, 20, 17, 5));
+                    singleDays.add(new SingleDay(5, 20, 19, 12));
+                    singleDays.add(new SingleDay(5, 20, 18, 18));
+                    singleDays.add(new SingleDay(5, 20, 15, 22));
 
 
-            }
-            else if(((String) CityBox.getValue()).equals("Breslau"))
-            {
-                singleDays.add(new SingleDay(6, 21, 10, 5));
-                singleDays.add(new SingleDay(6, 21, 11, 12));
-                singleDays.add(new SingleDay(6, 21, 12, 18));
-                singleDays.add(new SingleDay(6, 21, 13, 22));
+                } else if (((String) CityBox.getValue()).equals("Breslau")) {
+                    singleDays.add(new SingleDay(6, 21, 10, 5));
+                    singleDays.add(new SingleDay(6, 21, 11, 12));
+                    singleDays.add(new SingleDay(6, 21, 12, 18));
+                    singleDays.add(new SingleDay(6, 21, 13, 22));
 
-            }
+                } else if (((String) CityBox.getValue()).equals("Danzig")) {
+                    singleDays.add(new SingleDay(7, 22, 23, 5));
+                    singleDays.add(new SingleDay(7, 22, 24, 12));
+                    singleDays.add(new SingleDay(7, 22, 25, 18));
+                    singleDays.add(new SingleDay(7, 22, 26, 22));
 
-            else if(((String) CityBox.getValue()).equals("Danzig"))
-            {
-                singleDays.add(new SingleDay(7, 22, 23, 5));
-                singleDays.add(new SingleDay(7, 22, 24, 12));
-                singleDays.add(new SingleDay(7, 22, 25, 18));
-                singleDays.add(new SingleDay(7, 22, 26, 22));
-
-            }
-            for(int i = 0; i < singleDays.size(); i++)
-            {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
-                Pane pane = null;
-                try {
-                    pane = loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-                SingleDay day = singleDays.get(i);
-                SingleDayNode controller = loader.getController();
-                controller.setDay(day);
-                days.getChildren().add(pane);
-            }
+                for (int i = 0; i < singleDays.size(); i++) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
+                    Pane pane = null;
+                    try {
+                        pane = loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    SingleDay day = singleDays.get(i);
+                    SingleDayNode controller = loader.getController();
+                    controller.setDay(day);
+                    days.getChildren().add(pane);
+                }
+
 
         });
 
@@ -121,7 +157,7 @@ public class Controller {
 
 
 
-        
+
     }
 
 }
