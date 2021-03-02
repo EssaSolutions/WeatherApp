@@ -2,13 +2,11 @@ package projekt;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -51,11 +49,14 @@ public class Controller {
         button1.setText(text);
     }
 
+
     public void initialize() throws Exception
     {
 
+
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
-        CityBox.getItems().addAll("Warsaw","Breslau","Danzig");
+        CityBox.getItems().addAll("Choose your city","Warsaw","Breslau","Danzig");
+        CityBox.setValue("Choose your city");
         LanguageBox.getItems().addAll("Polski","English");
         LanguageBox.setValue("English");
         LanguageBox.setOnAction((event) ->
@@ -73,6 +74,7 @@ public class Controller {
             }
 
         });
+        CityText.setTooltip(new Tooltip("Warsaw, Breslau and Danzig are currently supported"));
         CityText.setOnAction((actionEvent -> {
 
                 if (CityText.getText().equals("Warsaw")) {
