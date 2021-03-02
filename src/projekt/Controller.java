@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -30,13 +31,6 @@ public class Controller {
     @FXML
     ChoiceBox <String> LanguageBox;
 
-    public void cityBoxClicked()
-    {
-        JInternalFrame primaryStage = null;
-        assert false;
-        primaryStage.setTitle("Aplikacja pogodowa");
-
-    }
 
     public void sayEssa(MouseEvent mouseEvent)
     {
@@ -66,7 +60,9 @@ public class Controller {
             if (((String) LanguageBox.getValue()).equals("Polski"))
             {
 
+
                 CityName.setPromptText("Wybierz miasto");
+
             }
             else
             {
@@ -75,21 +71,57 @@ public class Controller {
 
         });
 
-
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
-        singleDays.add(new SingleDay(5, 20, 17, 5));
-        singleDays.add(new SingleDay(5, 20, 19, 12));
-        singleDays.add(new SingleDay(5, 20, 18, 18));
-        singleDays.add(new SingleDay(5, 20, 15, 22));
+        CityBox.setOnAction((event) ->
+        {
+            if (((String) CityBox.getValue()).equals("Warsaw"))
+            {
+                singleDays.add(new SingleDay(5, 20, 17, 5));
+                singleDays.add(new SingleDay(5, 20, 19, 12));
+                singleDays.add(new SingleDay(5, 20, 18, 18));
+                singleDays.add(new SingleDay(5, 20, 15, 22));
 
-        for(int i = 0; i < singleDays.size(); i++){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
-            Pane pane = loader.load();
-            SingleDay day = singleDays.get(i);
-            SingleDayNode controller = loader.getController();
-            controller.setDay(day);
-            days.getChildren().add(pane);
-        }
+
+            }
+            else if(((String) CityBox.getValue()).equals("Breslau"))
+            {
+                singleDays.add(new SingleDay(6, 21, 10, 5));
+                singleDays.add(new SingleDay(6, 21, 11, 12));
+                singleDays.add(new SingleDay(6, 21, 12, 18));
+                singleDays.add(new SingleDay(6, 21, 13, 22));
+
+            }
+
+            else if(((String) CityBox.getValue()).equals("Danzig"))
+            {
+                singleDays.add(new SingleDay(7, 22, 23, 5));
+                singleDays.add(new SingleDay(7, 22, 24, 12));
+                singleDays.add(new SingleDay(7, 22, 25, 18));
+                singleDays.add(new SingleDay(7, 22, 26, 22));
+
+            }
+            for(int i = 0; i < singleDays.size(); i++)
+            {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
+                Pane pane = null;
+                try {
+                    pane = loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                SingleDay day = singleDays.get(i);
+                SingleDayNode controller = loader.getController();
+                controller.setDay(day);
+                days.getChildren().add(pane);
+            }
+
+        });
+
+
+
+
+
+        
     }
 
 }
