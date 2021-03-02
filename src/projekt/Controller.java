@@ -77,7 +77,9 @@ public class Controller {
         CityText.setTooltip(new Tooltip("Warsaw, Breslau and Danzig are currently supported"));
         CityText.setOnAction((actionEvent -> {
 
-                if (CityText.getText().equals("Warsaw")) {
+            singleDays.clear();
+            days.getChildren().clear();
+            if (CityText.getText().equals("Warsaw")) {
                     singleDays.add(new SingleDay(5, 20, 17, 5));
                     singleDays.add(new SingleDay(5, 20, 19, 12));
                     singleDays.add(new SingleDay(5, 20, 18, 18));
@@ -117,8 +119,11 @@ public class Controller {
 
         CityBox.setOnAction((event) ->
         {
+            singleDays.clear();
+            days.getChildren().clear();
 
-                if (((String) CityBox.getValue()).equals("Warsaw")) {
+            if (((String) CityBox.getValue()).equals("Warsaw"))
+                {
                     singleDays.add(new SingleDay(5, 20, 17, 5));
                     singleDays.add(new SingleDay(5, 20, 19, 12));
                     singleDays.add(new SingleDay(5, 20, 18, 18));
