@@ -55,7 +55,7 @@ public class Controller {
 
 
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
-        CityBox.getItems().addAll("Choose your city","Warsaw","Breslau","Danzig");
+        CityBox.getItems().addAll("Warsaw","Breslau","Danzig");
         CityBox.setValue("Choose your city");
         LanguageBox.getItems().addAll("Polski","English");
         LanguageBox.setValue("English");
