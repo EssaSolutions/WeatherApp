@@ -1,7 +1,5 @@
 package projekt;
 
-import java.awt.*;
-
 public class SingleDay {
 
     private int month;
@@ -10,35 +8,13 @@ public class SingleDay {
     private int hour;
     private String imageURL;
 
-    public SingleDay(int month, int day, int temperature, int hour){
+    public SingleDay(int month, int day, int temperature, int hour) {
         this.month = month;
         this.day = day;
         this.temperature = temperature;
         this.hour = hour;
         giveURL();
     }
-
-    public int getTemperature() {
-        return this.temperature;
-    }
-
-    public String tempToString(){
-        return Integer.toString(temperature) + "°C";
-    } //
-
-    public String dateToString(){
-        String string = "";
-        if(day > 9)
-            string += Integer.toString(day) + ".";
-        else
-            string += "0" + Integer.toString(day) + ".";
-        if(month>9)
-            string += Integer.toString(month);
-        else
-            string += "0" + Integer.toString(month);
-        return string;
-    }
-
 
     private void giveURL(){
         if(this.hour > 6 && this.hour < 20){
@@ -48,11 +24,36 @@ public class SingleDay {
         }
     }
 
-    public String getImageURL(){
-        return this.imageURL;
+    public int getTemperature() {
+        return this.temperature;
     }
 
-    public String hourToString(){
+    public String tempToString() {
+        return Integer.toString(temperature) + "°C";
+    } //
+
+    public String dateToString() {
+        String string = "";
+        if (day > 9)
+            string += Integer.toString(day) + ".";
+        else
+            string += "0" + Integer.toString(day) + ".";
+        if (month > 9)
+            string += Integer.toString(month);
+        else
+            string += "0" + Integer.toString(month);
+        return string;
+    }
+
+    public String hourToString() {
         return Integer.toString(hour) + ":00";
+    }
+
+    public String toString(){
+        return dateToString() + " " + hourToString() + ": " + tempToString();
+    }
+
+    public String getImageURL(){
+        return this.imageURL;
     }
 }

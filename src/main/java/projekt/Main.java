@@ -18,7 +18,6 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception
     {
         mainStage = primaryStage;
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample.fxml"));
         Pane root = loader.load();
         Scene scene1 = new Scene(root);
@@ -27,8 +26,6 @@ public class Main extends Application
         primaryStage.getIcons().add(new Image("projekt/images/weatherico.png"));
         primaryStage.setScene(scene1);
         primaryStage.show();
-
-
     }
 
     public static void main(String[] args)
