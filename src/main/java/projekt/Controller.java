@@ -1,9 +1,12 @@
 package projekt;
 
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -31,6 +34,15 @@ public class Controller {
     @FXML
     ChoiceBox <String> LanguageBox;
 
+    @FXML
+    Pane pane;
+
+    @FXML
+    GridPane mainGridPane;
+
+    @FXML
+    FlowPane mainFlowPane;
+
 
     public void sayEssa(MouseEvent mouseEvent)
     {
@@ -52,6 +64,29 @@ public class Controller {
 
     public void initialize() throws Exception
     {
+        double w1 = pane.getWidth();
+        double h1 = pane.getHeight();
+        //CityBox.prefHeightProperty().set(h1/2);
+        //CityBox.prefWidthProperty().set(w1/2);
+        //CityBox.setPrefWidth(w1/7);
+        //CityBox.setPrefHeight(h1/7);
+
+//        pane.prefHeightProperty().bind(Main.mainStage.heightProperty());
+//        pane.prefWidthProperty().bind(Main.mainStage.widthProperty());
+//
+//        mainGridPane.prefHeightProperty().bind(pane.heightProperty());
+//        mainGridPane.prefWidthProperty().bind(pane.widthProperty());
+//
+//        mainFlowPane.prefHeightProperty().bind(pane.heightProperty());
+//        mainFlowPane.prefWidthProperty().bind(pane.widthProperty());
+//
+//        days.prefHeightProperty().bind(mainFlowPane.heightProperty());
+//        days.prefWidthProperty().bind(mainFlowPane.widthProperty());
+//
+//
+//
+//        System.out.println(pane.widthProperty());
+//        System.out.println(pane.getWidth());
 
 
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
