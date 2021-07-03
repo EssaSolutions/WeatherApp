@@ -100,7 +100,7 @@ public class Controller {
 
                 }
                 for (int i = 0; i < singleDays.size(); i++) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
                     Pane pane = null;
                     try {
                         pane = loader.load();
@@ -144,7 +144,7 @@ public class Controller {
 
                 }
                 for (int i = 0; i < singleDays.size(); i++) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("singleday.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
                     Pane pane = null;
                     try {
                         pane = loader.load();

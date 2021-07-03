@@ -1,5 +1,7 @@
 package projekt;
 
+import java.awt.*;
+
 public class SingleDay {
 
     private int month;
@@ -37,11 +39,12 @@ public class SingleDay {
         return string;
     }
 
+
     private void giveURL(){
         if(this.hour > 6 && this.hour < 20){
-            this.imageURL = "/images/SunWhite100px.png";
+            this.imageURL = "/projekt/images/SunWhite100px.png";
         } else {
-            this.imageURL = "/images/MoonWhite100px.png";
+            this.imageURL = "/projekt/images/MoonWhite100px.png";
         }
     }
 

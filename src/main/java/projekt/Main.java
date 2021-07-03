@@ -14,13 +14,13 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample.fxml"));
         Pane root = loader.load();
         Controller controller = loader.getController();
         controller.setButtonText("Do 2 sceny");
 
         Scene scene1 = new Scene(root);
-        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("sample2.fxml"));
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/sample2.fxml"));
         Pane root2 = loader2.load();
         Controller2 controller2 = loader2.getController();
         Scene scene2 = new Scene(root2);
@@ -35,7 +35,7 @@ public class Main extends Application
         primaryStage.setTitle("Weather Application");
         root.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #E0FFFF, #858df1);");
         root2.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #E0FFFF, #858df1);");
-        primaryStage.getIcons().add(new Image("/images/weatherico.png"));
+        //primaryStage.getIcons().add(new Image("/images/weatherico.png"));
         primaryStage.setScene(scene1);
         primaryStage.show();
     }
