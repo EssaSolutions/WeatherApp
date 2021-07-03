@@ -121,6 +121,7 @@ public class Controller {
         {
             singleDays.clear();
             days.getChildren().clear();
+            //test
 
             if (((String) CityBox.getValue()).equals("Warsaw"))
                 {
