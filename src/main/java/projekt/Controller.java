@@ -19,16 +19,11 @@ public class Controller {
 
 
     @FXML
-    Label tekst;
-
-    @FXML
     HBox days;
 
     @FXML
     TextField CityText;
 
-    @FXML
-    ChoiceBox<String> CityBox;
 
     @FXML
     ChoiceBox<String> LanguageBox;
@@ -43,56 +38,24 @@ public class Controller {
     FlowPane mainFlowPane;
 
 
-    public void sayEssa(MouseEvent mouseEvent) {
-        tekst.setText("Essa!");
-    }
 
     @FXML
     Button button1;
 
-    public Button getButton() {
-        return this.button1;
-    }
-
-    public void setButtonText(String text) {
-        button1.setText(text);
-    }
 
 
-    public void initialize() throws Exception {
-        double w1 = pane.getWidth();
-        double h1 = pane.getHeight();
-        //CityBox.prefHeightProperty().set(h1/2);
-        //CityBox.prefWidthProperty().set(w1/2);
-        //CityBox.setPrefWidth(w1/7);
-        //CityBox.setPrefHeight(h1/7);
-
-//        pane.prefHeightProperty().bind(Main.mainStage.heightProperty());
-//        pane.prefWidthProperty().bind(Main.mainStage.widthProperty());
-//
-//        mainGridPane.prefHeightProperty().bind(pane.heightProperty());
-//        mainGridPane.prefWidthProperty().bind(pane.widthProperty());
-//
-//        mainFlowPane.prefHeightProperty().bind(pane.heightProperty());
-//        mainFlowPane.prefWidthProperty().bind(pane.widthProperty());
-//
-//        days.prefHeightProperty().bind(mainFlowPane.heightProperty());
-//        days.prefWidthProperty().bind(mainFlowPane.widthProperty());
-//
-//
-//
-//        System.out.println(pane.widthProperty());
-//        System.out.println(pane.getWidth());
+    public void initialize() throws Exception
+    {
 
 
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
-        CityBox.getItems().addAll("Warsaw", "Breslau", "Danzig");
-        CityBox.setValue("Choose your city");
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
         LanguageBox.setOnAction((event) ->
         {
-            if (((String) LanguageBox.getValue()).equals("Polski")) {
+
+            if (((String) LanguageBox.getValue()).equals("Polski"))
+            {
 
 
                 CityText.setPromptText("Wybierz miasto i wcisnij Enter");
@@ -102,7 +65,7 @@ public class Controller {
             }
 
         });
-        CityText.setTooltip(new Tooltip("Warsaw, Breslau and Danzig are currently supported"));
+        CityText.setTooltip(new Tooltip("200 thousand cities supported!"));
         CityText.setOnAction((actionEvent -> {
 
             singleDays.clear();
@@ -125,50 +88,6 @@ public class Controller {
 
 
         }));
-
-
-        CityBox.setOnAction((event) ->
-        {
-            singleDays.clear();
-            days.getChildren().clear();
-
-            if (((String) CityBox.getValue()).equals("Warsaw")) {
-                singleDays.add(new SingleDay(5, 20, 17, 5));
-                singleDays.add(new SingleDay(5, 20, 19, 12));
-                singleDays.add(new SingleDay(5, 20, 18, 18));
-                singleDays.add(new SingleDay(5, 20, 15, 22));
-
-
-            } else if (((String) CityBox.getValue()).equals("Breslau")) {
-                singleDays.add(new SingleDay(6, 21, 10, 5));
-                singleDays.add(new SingleDay(6, 21, 11, 12));
-                singleDays.add(new SingleDay(6, 21, 12, 18));
-                singleDays.add(new SingleDay(6, 21, 13, 22));
-
-            } else if (((String) CityBox.getValue()).equals("Danzig")) {
-                singleDays.add(new SingleDay(7, 22, 23, 5));
-                singleDays.add(new SingleDay(7, 22, 24, 12));
-                singleDays.add(new SingleDay(7, 22, 25, 18));
-                singleDays.add(new SingleDay(7, 22, 26, 22));
-
-            }
-            for (int i = 0; i < singleDays.size(); i++) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
-                Pane pane = null;
-                try {
-                    pane = loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                SingleDay day = singleDays.get(i);
-                SingleDayNode controller = loader.getController();
-                controller.setDay(day);
-                days.getChildren().add(pane);
-            }
-
-
-        });
-
 
     }
 
