@@ -8,7 +8,8 @@ public class SingleDay {
     private int hour;
     private String imageURL;
 
-    public SingleDay(int month, int day, int temperature, int hour) {
+    public SingleDay(int month, int day, int temperature, int hour)
+    {
         this.month = month;
         this.day = day;
         this.temperature = temperature;

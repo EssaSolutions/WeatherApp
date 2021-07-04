@@ -49,6 +49,15 @@ public class City{
             int hour = Integer.valueOf(dates[1].substring(0, 2));
             int month = Integer.valueOf(dates[0].substring(5, 7));
             int day = Integer.valueOf(dates[0].substring(8));
+            hour += zone;
+            if (hour < 0)
+            {
+                hour +=24;
+            }
+            else if (hour > 24)
+            {
+                hour -=24;
+            }
             double temp = object.getJSONObject("main").getDouble("temp");
             int temperature = (int)(temp - 273.15);
             days.add(new SingleDay(month, day, temperature, hour));
