@@ -52,11 +52,25 @@ public class City{
             hour += zone;
             if (hour < 0)
             {
+
                 hour +=24;
+                day -= 1;
+                if (day == 0)
+                {
+                    month -=1;
+                    day = 30;
+                }
+
             }
             else if (hour > 24)
             {
                 hour -=24;
+                day +=1;
+                if (day == 31)
+                {
+                    month +=1;
+                    day = 1;
+                }
             }
             double temp = object.getJSONObject("main").getDouble("temp");
             int temperature = (int)(temp - 273.15);
