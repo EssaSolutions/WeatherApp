@@ -37,10 +37,14 @@ public class Controller {
     @FXML
     FlowPane mainFlowPane;
 
-
-
     @FXML
-    Button button1;
+    ScrollPane spane;
+
+
+
+
+
+
 
 
 
@@ -59,9 +63,11 @@ public class Controller {
 
 
                 CityText.setPromptText("Wybierz miasto i wcisnij Enter");
+                Main.mainStage.setTitle("Aplikacja pogodowa");
 
             } else {
                 CityText.setPromptText("Enter the city name and press Enter");
+                Main.mainStage.setTitle("Weather Application");
             }
 
         });
@@ -88,6 +94,10 @@ public class Controller {
 
 
         }));
+
+
+        spane.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #E0FFFF, #858df1);");
+        days.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #99a3f5, #858df1);");
 
     }
 

@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -18,6 +19,7 @@ public class SingleDayNode implements Initializable {
 
     public SingleDay day;
     @FXML public Pane pane;
+    @FXML public ScrollPane spane;
     @FXML public ImageView imageView;
     @FXML public Label date;
     @FXML public Label temp;

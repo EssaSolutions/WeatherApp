@@ -18,12 +18,13 @@
         </rowConstraints>
          <children>
             <TextField fx:id="CityText" alignment="CENTER" focusTraversable="false" prefHeight="25.0" prefWidth="230.0" promptText="Enter the city name and press Enter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="LanguageBox" prefWidth="150.0" />
          </children>
       </GridPane>
-      <FlowPane fx:id="mainFlowPane" layoutY="311.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="169.0" prefWidth="632.0">
-         <children>
-            <HBox fx:id="days" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="167.0" prefWidth="631.0" />
-         </children></FlowPane>
+      <ScrollPane fx:id="spane" layoutX="4.0" layoutY="280.0" prefHeight="200.0" prefWidth="634.0">
+         <content>
+            <HBox fx:id="days" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="185.0" prefWidth="636.0" />
+         </content>
+      </ScrollPane>
+      <ChoiceBox fx:id="LanguageBox" layoutX="4.0" layoutY="2.0" prefHeight="25.0" prefWidth="81.0" />
    </children>
 </Pane>
