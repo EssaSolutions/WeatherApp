@@ -10,26 +10,29 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class City{
+public class City {
     String name;
     ArrayList<SingleDay> days;
 
-    public City(String name){
+    public City(String name) {
         this.name = name;
         this.days = new ArrayList<SingleDay>();
         try {
             createList();
-        } catch(UnirestException u){
+        } catch (UnirestException u) {
             u.printStackTrace();
         }
     }
 
-    public ArrayList<SingleDay> getDays(){
+    public ArrayList<SingleDay> getDays() {
         return days;
     }
 
-    public int size(){
+    public int size() {
         return days.size();
     }
 
@@ -39,42 +42,18 @@ public class City{
                 .getBody()
                 .toString();
         JSONObject json = new JSONObject(response);
-        int zone = json.getJSONObject("city").getInt("timezone")/3600;
+        long timezone = Integer.toUnsignedLong(json.getJSONObject("city").getInt("timezone"));
         JSONArray list = json.getJSONArray("list");
-        for(int i = 0; i < list.length(); i++)
-        {
+        for (int i = 0; i < list.length(); i++) {
             JSONObject object = list.getJSONObject(i);
-            String date = object.getString("dt_txt");
-            String[] dates = date.split(" ");
-            int hour = Integer.valueOf(dates[1].substring(0, 2));
-            int month = Integer.valueOf(dates[0].substring(5, 7));
-            int day = Integer.valueOf(dates[0].substring(8));
-            hour += zone;
-            if (hour < 0)
-            {
-
-                hour +=24;
-                day -= 1;
-                if (day == 0)
-                {
-                    month -=1;
-                    day = 30;
-                }
-
-            }
-            else if (hour > 24)
-            {
-                hour -=24;
-                day +=1;
-                if (day == 31)
-                {
-                    month +=1;
-                    day = 1;
-                }
-            }
             double temp = object.getJSONObject("main").getDouble("temp");
-            int temperature = (int)(temp - 273.15);
-            days.add(new SingleDay(month, day, temperature, hour));
+            int temperature = (int) (temp - 273.15);
+            long time = Integer.toUnsignedLong(object.getInt("dt"));
+            Date date = new Date((time - timezone) * 1000);
+            Calendar calendar = GregorianCalendar.getInstance();
+            calendar.setTime(date);
+            days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY)));
         }
+
     }
 }
