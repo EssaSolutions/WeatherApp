@@ -3,12 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Controller">
+<BorderPane fx:id="bpane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Controller">
    <bottom>
       <ScrollPane fx:id="spane" prefHeight="200.0" prefWidth="634.0" BorderPane.alignment="CENTER">
          <content>
-            <HBox fx:id="days" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="185.0" prefWidth="636.0" />
+            <HBox fx:id="days" prefHeight="185.0" prefWidth="636.0" />
          </content>
       </ScrollPane>
    </bottom>

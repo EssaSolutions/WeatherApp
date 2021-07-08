@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 
 import javax.swing.*;
@@ -40,6 +37,9 @@ public class Controller {
     @FXML
     ScrollPane spane;
 
+    @FXML
+    BorderPane bpane;
+
 
 
 
@@ -50,6 +50,8 @@ public class Controller {
 
     public void initialize() throws Exception
     {
+
+
 
 
 
@@ -104,6 +106,10 @@ public class Controller {
 
         spane.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #E0FFFF, #858df1);");
         days.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #99a3f5, #858df1);");
+//        spane.prefWidthProperty().bind(bpane.prefWidthProperty());
+//        days.prefWidthProperty().bind(spane.prefWidthProperty());
+        spane.setFitToWidth(true);
+
 
     }
 
