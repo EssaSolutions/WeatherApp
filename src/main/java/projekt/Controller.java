@@ -104,8 +104,8 @@ public class Controller {
         }));
 
 
-        spane.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #E0FFFF, #858df1);");
-        days.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #99a3f5, #858df1);");
+        spane.setStyle("-fx-background-color: #858df1;");
+        days.setStyle("-fx-background-color: #858df1;");
 //        spane.prefWidthProperty().bind(bpane.prefWidthProperty());
 //        days.prefWidthProperty().bind(spane.prefWidthProperty());
         spane.setFitToWidth(true);

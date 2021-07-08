@@ -22,7 +22,7 @@ public class Main extends Application
         Pane root = loader.load();
         Scene scene1 = new Scene(root);
         primaryStage.setTitle("Weather Application");
-        root.setStyle("-fx-background-color: linear-gradient(from 0% 10% to 0% 60%, #E0FFFF, #858df1);");
+        root.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 0% 40%, #E0FFFF, #858df1);");
         primaryStage.getIcons().add(new Image("projekt/images/weatherico.png"));
         primaryStage.setScene(scene1);
         primaryStage.show();
