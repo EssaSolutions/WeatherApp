@@ -52,6 +52,11 @@ public class Controller {
     {
 
 
+
+
+
+
+
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
@@ -90,6 +95,7 @@ public class Controller {
                 SingleDayNode controller = loader.getController();
                 controller.setDay(day);
                 days.getChildren().add(pane);
+
             }
 
 
