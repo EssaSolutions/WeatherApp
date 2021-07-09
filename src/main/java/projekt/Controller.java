@@ -14,13 +14,11 @@ import java.util.ArrayList;
 
 public class Controller {
 
-
     @FXML
     HBox days;
 
     @FXML
     TextField CityText;
-
 
     @FXML
     ChoiceBox<String> LanguageBox;
@@ -40,25 +38,8 @@ public class Controller {
     @FXML
     BorderPane bpane;
 
-
-
-
-
-
-
-
-
     public void initialize() throws Exception
     {
-
-
-
-
-
-
-
-
-
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
@@ -67,8 +48,6 @@ public class Controller {
 
             if (((String) LanguageBox.getValue()).equals("Polski"))
             {
-
-
                 CityText.setPromptText("Wybierz miasto i wcisnij Enter");
                 Main.mainStage.setTitle("Aplikacja pogodowa");
 
@@ -80,37 +59,33 @@ public class Controller {
         });
         CityText.setTooltip(new Tooltip("200 thousand cities supported!"));
         CityText.setOnAction((actionEvent -> {
-
-            singleDays.clear();
-            days.getChildren().clear();
-            City city = new City(CityText.getText());
-            singleDays.addAll(city.getDays());
-            for (int i = 0; i < singleDays.size(); i++) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
-                Pane pane = null;
-                try {
-                    pane = loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            try {
+                singleDays.clear();
+                days.getChildren().clear();
+                City city = new City((CityText.getText()).replace(" ", "+"));
+                singleDays.addAll(city.getDays());
+                for (int i = 0; i < singleDays.size(); i++) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
+                    Pane pane = null;
+                    try {
+                        pane = loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    SingleDay day = singleDays.get(i);
+                    SingleDayNode controller = loader.getController();
+                    controller.setDay(day);
+                    days.getChildren().add(pane);
                 }
-                SingleDay day = singleDays.get(i);
-                SingleDayNode controller = loader.getController();
-                controller.setDay(day);
-                days.getChildren().add(pane);
-
+            } catch (org.json.JSONException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR, "City " + CityText.getText() + " not found.", ButtonType.OK);
+                alert.showAndWait();
             }
 
-
         }));
-
-
         spane.setStyle("-fx-background-color: #858df1;");
         days.setStyle("-fx-background-color: #858df1;");
-//        spane.prefWidthProperty().bind(bpane.prefWidthProperty());
-//        days.prefWidthProperty().bind(spane.prefWidthProperty());
         spane.setFitToWidth(true);
-
-
     }
 
 }
