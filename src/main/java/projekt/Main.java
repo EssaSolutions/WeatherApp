@@ -14,9 +14,11 @@ public class Main extends Application
 
     public static Stage mainStage;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+
         mainStage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample.fxml"));
         Pane root = loader.load();
@@ -31,10 +33,15 @@ public class Main extends Application
     public static void main(String[] args)
     {
 
+
+
+
+
         launch(args);
 
 
     }
+
 
 
 }

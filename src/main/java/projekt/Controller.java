@@ -6,10 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.SVGPath;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Controller {
@@ -40,6 +44,12 @@ public class Controller {
     @FXML
     BorderPane bpane;
 
+    @FXML
+    Pane testPane;
+
+    @FXML
+    Label weatherImg;
+
 
 
 
@@ -50,6 +60,13 @@ public class Controller {
 
     public void initialize() throws Exception
     {
+        SVGPath githubIcon;
+
+//        WebView webView = new WebView();
+//        webView.getEngine().load("file:///C:/Users/kubat/Desktop/wIcons/animated/cloudy.svg");
+//        final WebView browser = new WebView();
+//        URL url = getClass().getResource("/projekt/images/cloudySVG.svg");
+//        browser.getEngine().load(url.toExternalForm());
 
 
 
@@ -59,6 +76,17 @@ public class Controller {
 
 
 
+        githubIcon = new SVGPath();
+        githubIcon.setContent("M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z");
+        githubIcon.setFill(Color.web("#91C0F8"));
+        githubIcon.setScaleX(2);
+        githubIcon.setScaleZ(2);
+        githubIcon.setScaleY(2);
+        weatherImg.setGraphic(githubIcon);
+
+
+
+        //testPane.getChildren().add(githubIcon);
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
