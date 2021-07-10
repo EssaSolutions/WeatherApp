@@ -89,10 +89,6 @@ public class Controller {
         weatherImg.setGraphic(githubIcon);
 
 
-
-
-
-
         //testPane.getChildren().add(githubIcon);
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
