@@ -86,6 +86,7 @@ public class Controller {
 
 
 
+
         //testPane.getChildren().add(githubIcon);
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
@@ -123,7 +124,7 @@ public class Controller {
                         e.printStackTrace();
                     }
 
-               
+
                     SingleDay day = singleDays.get(i);
                     SingleDayNode controller = loader.getController();
                     controller.setDay(day);
@@ -145,8 +146,6 @@ public class Controller {
 
         spane.setStyle("-fx-background-color: #858df1;");
         days.setStyle("-fx-background-color: #858df1;");
-//        spane.prefWidthProperty().bind(bpane.prefWidthProperty());
-//        days.prefWidthProperty().bind(spane.prefWidthProperty());
         spane.setFitToWidth(true);
 
 
