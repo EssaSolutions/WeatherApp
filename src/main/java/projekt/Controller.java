@@ -1,5 +1,9 @@
 package projekt;
 
+import animatefx.animation.FadeIn;
+import animatefx.animation.FadeInLeft;
+import animatefx.animation.FadeOut;
+import animatefx.animation.FadeOutLeft;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,12 +91,16 @@ public class Controller {
 
 
 
+
+
         //testPane.getChildren().add(githubIcon);
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
         LanguageBox.setOnAction((event) ->
         {
+            new FadeIn(testPane).play();
+
 
             if (((String) LanguageBox.getValue()).equals("Polski"))
             {
@@ -110,7 +118,10 @@ public class Controller {
         CityText.setTooltip(new Tooltip("200 thousand cities supported!"));
         CityText.setOnAction((actionEvent -> {
 
+
             try {
+                new FadeOutLeft(days).play();
+
                 singleDays.clear();
                 days.getChildren().clear();
                 City city = new City((CityText.getText()).replace(" ", "+"));
@@ -129,6 +140,7 @@ public class Controller {
                     SingleDayNode controller = loader.getController();
                     controller.setDay(day);
                     days.getChildren().add(pane);
+                    new FadeInLeft(days).play();
 
             }
 
@@ -146,6 +158,7 @@ public class Controller {
 
         spane.setStyle("-fx-background-color: #858df1;");
         days.setStyle("-fx-background-color: #858df1;");
+        testPane.setStyle("-fx-background-color: #0c0000;");
         spane.setFitToWidth(true);
 
 
