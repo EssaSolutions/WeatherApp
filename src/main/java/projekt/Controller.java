@@ -109,23 +109,34 @@ public class Controller {
         CityText.setTooltip(new Tooltip("200 thousand cities supported!"));
         CityText.setOnAction((actionEvent -> {
 
-            singleDays.clear();
-            days.getChildren().clear();
-            City city = new City(CityText.getText());
-            singleDays.addAll(city.getDays());
-            for (int i = 0; i < singleDays.size(); i++) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
-                Pane pane = null;
-                try {
-                    pane = loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                SingleDay day = singleDays.get(i);
-                SingleDayNode controller = loader.getController();
-                controller.setDay(day);
-                days.getChildren().add(pane);
+            try {
+                singleDays.clear();
+                days.getChildren().clear();
+                City city = new City((CityText.getText()).replace(" ", "+"));
+                singleDays.addAll(city.getDays());
+                for (int i = 0; i < singleDays.size(); i++) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
+                    Pane pane = null;
+                    try {
+                        pane = loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
+               
+                    SingleDay day = singleDays.get(i);
+                    SingleDayNode controller = loader.getController();
+                    controller.setDay(day);
+                    days.getChildren().add(pane);
+
+            }
+
+
+
+            }
+                catch (org.json.JSONException e){
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "City " + CityText.getText() + " not found.", ButtonType.OK);
+                    alert.showAndWait();
             }
 
 
