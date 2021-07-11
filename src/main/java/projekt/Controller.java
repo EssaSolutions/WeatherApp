@@ -167,12 +167,8 @@ public class Controller {
 
 
 
+        
 
-
-
-
-
-        //testPane.getChildren().add(weatherIcon);
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
