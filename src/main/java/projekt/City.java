@@ -28,6 +28,7 @@ public class City {
     boolean isSunny;
     boolean isCloudy;
     String weather;
+    int hour;
     //static SVGPath githubIcon;
 
     public City(String name) {
@@ -69,42 +70,22 @@ public class City {
             Date date = new Date((time - timezone) * 1000);
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.setTime(date);
+            hour = calendar.get(Calendar.HOUR_OF_DAY);
 
 //            String weatherr = object.getJSONArray("weather").getJSONObject(0).getString("main");
-//            //System.out.println(weatherr);
+//            System.out.println(weatherr);
 
             days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY)));
         }
 
     }
 
-    public void checkWeather()
+    public String checkWeather()
     {
-        if (weather == "Clouds")
-        {
-            isCloudy = true;
-        }
-        if (weather == "Sunny")
-        {
-            isSunny = true;
-        }
-        if (weather == "Rainy")
-        {
-            isRainy = true;
-        }
-        if (weather == "Windy")
-        {
-            isWindy = true;
-        }
-
-//        Image image = new Image(new File("puppy.gif").toURI().toString());
-//        ImageView imageview = new ImageView(image);
-
-//        githubIcon = new SVGPath();
-//        githubIcon.setContent("M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z");
-//        githubIcon.setFill(Color.web("#91C0F8"));
-        //contentContainer.getChildren().add(githubIcon);
-
-
+        return weather;
+    }
+    public int checkHour()
+    {
+        return hour;
     }
 }
