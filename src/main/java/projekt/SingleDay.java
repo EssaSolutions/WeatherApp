@@ -28,26 +28,26 @@ public class SingleDay {
         {
             if (weather.equals("Clear"))
             {
-                this.imageURL = "/projekt/images/sun.png";
+                this.imageURL = "/projekt/images/sun100.png";
             }
             else if(weather.equals("Rain"))
             {
-                this.imageURL = "/projekt/images/cloudyy.png";
+                this.imageURL = "/projekt/images/cloudyy100.png";
             }
             else if(weather.equals("Clouds"))
             {
                 if (description.equals("scattered clouds") || description.equals("few clouds"))
                 {
-                    this.imageURL = "/projekt/images/sun.png";
+                    this.imageURL = "/projekt/images/sun100.png";
                 }
                 else if (description.equals("broken clouds"))
                 {
-                    this.imageURL = "/projekt/images/cloudy.png";
+                    this.imageURL = "/projekt/images/cloudy100.png";
 
                 }
                 else
                 {
-                    this.imageURL = "/projekt/images/cloud.png";
+                    this.imageURL = "/projekt/images/cloud100.png";
                 }
             }
 
@@ -57,26 +57,26 @@ public class SingleDay {
                 if (weather.equals("Clear"))
                 {
 
-                    this.imageURL = "/projekt/images/moon.png";
+                    this.imageURL = "/projekt/images/moon100.png";
                 }
                 else if(weather.equals("Rain"))
                 {
 
-                    this.imageURL = "/projekt/images/rain.png";
+                    this.imageURL = "/projekt/images/rain100.png";
                 }
                 else if(weather.equals("Clouds"))
                 {
                     if (description.equals("scattered clouds") || description.equals("few clouds"))
                     {
-                        this.imageURL = "/projekt/images/moon.png";
+                        this.imageURL = "/projekt/images/moon100.png";
                     }
                     else if (description.equals("broken clouds"))
                     {
-                        this.imageURL = "/projekt/images/cloudd.png";
+                        this.imageURL = "/projekt/images/cloudd100.png";
                     }
                     else
                     {
-                        this.imageURL = "/projekt/images/cloud.png";
+                        this.imageURL = "/projekt/images/cloud100.png";
                     }
 
                 }
