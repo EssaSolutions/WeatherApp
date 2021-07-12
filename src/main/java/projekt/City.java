@@ -72,10 +72,14 @@ public class City {
             calendar.setTime(date);
             hour = calendar.get(Calendar.HOUR_OF_DAY);
 
-//            String weatherr = object.getJSONArray("weather").getJSONObject(0).getString("main");
-//            System.out.println(weatherr);
+            String weatherr = object.getJSONArray("weather").getJSONObject(0).getString("main");
+            System.out.println(weatherr);
+            JSONObject weatherrr = object.getJSONArray("weather").getJSONObject(0);
+            //System.out.println(weatherrr);
+            String description = object.getJSONArray("weather").getJSONObject(0).getString("description");
+            System.out.println(description);
 
-            days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY)));
+            days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY),weatherr,description));
         }
 
     }

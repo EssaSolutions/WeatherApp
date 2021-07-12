@@ -15,10 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
-import javafx.scene.web.WebView;
 import javafx.util.Duration;
-import org.apache.batik.transcoder.TranscoderException;
-import org.apache.batik.transcoder.TranscoderInput;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -93,47 +90,6 @@ public class Controller {
 
         ImageView sunIcon = new ImageView();
 
-        BufferedImageTranscoder transcoder = new BufferedImageTranscoder();
-        try (InputStream file = getClass().getResourceAsStream("/projekt/images/day.svg"))
-        {
-            TranscoderInput transIn = new TranscoderInput(file);
-            try {
-                transcoder.transcode(transIn, null);
-                Image img = SwingFXUtils.toFXImage(transcoder.getBufferedImage(), null);
-                sunIcon.setImage(img);
-            } catch (TranscoderException ex)
-            {
-                ex.printStackTrace();
-            }
-        }
-        catch (IOException io) {
-            io.printStackTrace();
-        }
-
-        sunIcon.setFitHeight(100);
-        sunIcon.setPreserveRatio(true);
-
-        ImageView cloudIcon = new ImageView();
-
-        BufferedImageTranscoder transcoder2 = new BufferedImageTranscoder();
-        try (InputStream file = getClass().getResourceAsStream("/projekt/images/cloudySVG.svg"))
-        {
-            TranscoderInput transIn = new TranscoderInput(file);
-            try {
-                transcoder2.transcode(transIn, null);
-                Image img = SwingFXUtils.toFXImage(transcoder2.getBufferedImage(), null);
-                cloudIcon.setImage(img);
-            } catch (TranscoderException ex)
-            {
-                ex.printStackTrace();
-            }
-        }
-        catch (IOException io) {
-            io.printStackTrace();
-        }
-
-        cloudIcon.setFitHeight(100);
-        cloudIcon.setPreserveRatio(true);
 
 
 
@@ -144,30 +100,6 @@ public class Controller {
 
 
 
-        weatherIcon = new SVGPath();
-        weatherIcon.setContent("M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z");
-        weatherIcon.setFill(Color.web("#91C0F8"));
-        weatherIcon.setScaleX(2);
-        weatherIcon.setScaleZ(2);
-        weatherIcon.setScaleY(2);
-        weatherIcon.setContent(testPane.getStyle());
-        weatherImg2.setGraphic(weatherIcon);
-
-
-
-        hourIcon = new SVGPath();
-        //hourIcon.setContent("M14.5,13.2c0-3.7,2-6.9,5-8.7   c-1.5-0.9-3.2-1.3-5-1.3c-5.5,0-10,4.5-10,10s4.5,10,10,10c1.8,0,3.5-0.5,5-1.3C16.5,20.2,14.5,16.9,14.5,13.2z");
-        hourIcon.setScaleX(2);
-        hourIcon.setScaleZ(2);
-        hourIcon.setScaleY(2);
-        hourIcon.setFill(Color.ORANGE);
-
-
-
-
-
-
-        
 
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
@@ -203,7 +135,6 @@ public class Controller {
                 String weather = city.checkWeather();
                 if (weather.equals("Rain"))
                 {
-                    weatherIcon.setContent("M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z");
 
 
                 }
@@ -211,16 +142,11 @@ public class Controller {
                 if (hour > 6 && hour < 20)
                 {
 
-                    hourIcon.setContent("M14.5,13.2c0-3.7,2-6.9,5-8.7   c-1.5-0.9-3.2-1.3-5-1.3c-5.5,0-10,4.5-10,10s4.5,10,10,10c1.8,0,3.5-0.5,5-1.3C16.5,20.2,14.5,16.9,14.5,13.2z");
-                    weatherImg2.setGraphic(sunIcon);
 
                 }
                 else
                 {
-                    hourIcon.setContent("M14.5,13.2c0-3.7,2-6.9,5-8.7   c-1.5-0.9-3.2-1.3-5-1.3c-5.5,0-10,4.5-10,10s4.5,10,10,10c1.8,0,3.5-0.5,5-1.3C16.5,20.2,14.5,16.9,14.5,13.2z");
-                    weatherImg2.setGraphic(hourIcon);
-                    weatherIcon.setContent("M47.7,35.4     c0-4.6-3.7-8.2-8.2-8.2c-1,0-1.9,0.2-2.8,0.5c-0.3-3.4-3.1-6.2-6.6-6.2c-3.7,0-6.7,3-6.7,6.7c0,0.8,0.2,1.6,0.4,2.3     c-0.3-0.1-0.7-0.1-1-0.1c-3.7,0-6.7,3-6.7,6.7c0,3.6,2.9,6.6,6.5,6.7l17.2,0C44.2,43.3,47.7,39.8,47.7,35.4z");
-                    weatherImg1.setGraphic(weatherIcon);
+
                 }
                 singleDays.addAll(city.getDays());
                 for (int i = 0; i < singleDays.size(); i++) {
@@ -261,5 +187,6 @@ public class Controller {
 
 
     }
+
 
 }

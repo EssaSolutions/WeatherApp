@@ -7,22 +7,81 @@ public class SingleDay {
     private int temperature;
     private int hour;
     private String imageURL;
+    private String weather;
+    private String description;
 
-    public SingleDay(int month, int day, int temperature, int hour)
+    public SingleDay(int month, int day, int temperature, int hour, String weather, String description)
     {
         this.month = month;
         this.day = day;
         this.temperature = temperature;
         this.hour = hour;
+        this.weather = weather;
+        this.description = description;
         giveURL();
     }
 
-    private void giveURL(){
-        if(this.hour > 6 && this.hour < 20){
-            this.imageURL = "/projekt/images/SunWhite100px.png";
-        } else {
-            this.imageURL = "/projekt/images/MoonWhite100px.png";
+    private void giveURL()
+    {
+
+        if(this.hour > 6 && this.hour < 20)
+        {
+            if (weather.equals("Clear"))
+            {
+                this.imageURL = "/projekt/images/sun.png";
+            }
+            else if(weather.equals("Rain"))
+            {
+                this.imageURL = "/projekt/images/cloudyy.png";
+            }
+            else if(weather.equals("Clouds"))
+            {
+                if (description.equals("scattered clouds") || description.equals("few clouds"))
+                {
+                    this.imageURL = "/projekt/images/sun.png";
+                }
+                else if (description.equals("broken clouds"))
+                {
+                    this.imageURL = "/projekt/images/cloudy.png";
+
+                }
+                else
+                {
+                    this.imageURL = "/projekt/images/cloud.png";
+                }
+            }
+
         }
+        else
+            {
+                if (weather.equals("Clear"))
+                {
+
+                    this.imageURL = "/projekt/images/moon.png";
+                }
+                else if(weather.equals("Rain"))
+                {
+
+                    this.imageURL = "/projekt/images/rain.png";
+                }
+                else if(weather.equals("Clouds"))
+                {
+                    if (description.equals("scattered clouds") || description.equals("few clouds"))
+                    {
+                        this.imageURL = "/projekt/images/moon.png";
+                    }
+                    else if (description.equals("broken clouds"))
+                    {
+                        this.imageURL = "/projekt/images/cloudd.png";
+                    }
+                    else
+                    {
+                        this.imageURL = "/projekt/images/cloud.png";
+                    }
+
+                }
+
+            }
     }
 
     public int getTemperature() {
@@ -58,3 +117,5 @@ public class SingleDay {
         return this.imageURL;
     }
 }
+
+//this.imageURL = "/projekt/images/SunWhite100px.png";
