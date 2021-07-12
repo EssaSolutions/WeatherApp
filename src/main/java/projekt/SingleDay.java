@@ -117,5 +117,3 @@ public class SingleDay {
         return this.imageURL;
     }
 }
-
-//this.imageURL = "/projekt/images/SunWhite100px.png";
