@@ -55,11 +55,9 @@ public class City {
                 .getBody()
                 .toString();
         JSONObject json = new JSONObject(response);
-        long timezone = Integer.toUnsignedLong(json.getJSONObject("city").getInt("timezone"));
-
+        long timezone = json.getJSONObject("city").getLong("timezone");
         weather = json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("main");
         checkWeather();
-        System.out.println(weather);
 
         JSONArray list = json.getJSONArray("list");
         for (int i = 0; i < list.length(); i++) {
@@ -67,17 +65,14 @@ public class City {
             double temp = object.getJSONObject("main").getDouble("temp");
             int temperature = (int) (temp - 273.15);
             long time = Integer.toUnsignedLong(object.getInt("dt"));
-            Date date = new Date((time - timezone) * 1000);
+            Date date = new Date((time + timezone) * 1000);
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.setTime(date);
             hour = calendar.get(Calendar.HOUR_OF_DAY);
 
             String weatherr = object.getJSONArray("weather").getJSONObject(0).getString("main");
-            System.out.println(weatherr);
             JSONObject weatherrr = object.getJSONArray("weather").getJSONObject(0);
-            //System.out.println(weatherrr);
             String description = object.getJSONArray("weather").getJSONObject(0).getString("description");
-            System.out.println(description);
 
             days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY),weatherr,description));
         }
