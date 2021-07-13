@@ -1,5 +1,6 @@
 package projekt;
 
+import animatefx.animation.FadeInLeft;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -19,7 +20,6 @@ public class SingleDayNode implements Initializable {
 
     public SingleDay day;
     @FXML public Pane pane;
-    @FXML public ScrollPane spane;
     @FXML public ImageView imageView;
     @FXML public Label date;
     @FXML public Label temp;
@@ -33,7 +33,8 @@ public class SingleDayNode implements Initializable {
     public void setDay(SingleDay day){
         Font font = new Font("projekt/fonts/FuturaLightFont.ttf", 20);
         this.day = day;
-        imageView.setImage(new Image(day.getImageURL()));
+        if(day.getImageURL() != null)
+            imageView.setImage(new Image(day.getImageURL()));
         date.setText(day.dateToString());
         date.setFont(font);
         hour.setText(day.hourToString());
@@ -44,4 +45,8 @@ public class SingleDayNode implements Initializable {
         temp.setFont(font);
         pane.setStyle("-fx-border-color: white");
     }
+
+    public Pane getPane(){ return pane; }
+
+    public SingleDay getDay(){ return day; }
 }

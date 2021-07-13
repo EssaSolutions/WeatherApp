@@ -6,8 +6,10 @@ import animatefx.animation.FadeOut;
 import animatefx.animation.FadeOutLeft;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +18,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
+import org.json.JSONException;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -27,25 +30,17 @@ public class Controller {
     static ArrayList<String> weatherImgs;
 
 
-
     @FXML
     HBox days;
 
     @FXML
     TextField CityText;
 
-
     @FXML
     ChoiceBox<String> LanguageBox;
 
     @FXML
-    Pane pane;
-
-    @FXML
     GridPane mainGridPane;
-
-    @FXML
-    FlowPane mainFlowPane;
 
     @FXML
     ScrollPane spane;
@@ -53,74 +48,19 @@ public class Controller {
     @FXML
     BorderPane bpane;
 
-    @FXML
-    Pane testPane;
-
-    @FXML
-    Label weatherImg1;
-
-    @FXML
-    Label weatherImg2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void initialize() throws Exception
-    {
-
-        SVGPath weatherIcon;
-        SVGPath hourIcon;
-
-//        WebView webView = new WebView();
-//        webView.getEngine().load("file:///C:/Users/kubat/Desktop/wIcons/animated/cloudy.svg");
-//        final WebView browser = new WebView();
-//        URL url = getClass().getResource("/projekt/images/cloudySVG.svg");
-//        browser.getEngine().load(url.toExternalForm());
-
-
-
-        ImageView sunIcon = new ImageView();
-
-
-
-
-
-
-
-
-
-
-
-
+    public void initialize() throws Exception {
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
         LanguageBox.setOnAction((event) ->
         {
-            new FadeIn(testPane).play();
-
-
-            if (((String) LanguageBox.getValue()).equals("Polski"))
-            {
-
-
+            if ((LanguageBox.getValue()).equals("Polski")) {
                 CityText.setPromptText("Wybierz miasto i wcisnij Enter");
                 Main.mainStage.setTitle("Aplikacja pogodowa");
-
             } else {
                 CityText.setPromptText("Enter the city name and press Enter");
                 Main.mainStage.setTitle("Weather Application");
             }
-
         });
         CityText.setTooltip(new Tooltip("200 thousand cities supported!"));
         CityText.setOnAction((actionEvent -> {
@@ -128,27 +68,16 @@ public class Controller {
 
             try {
                 new FadeOutLeft(days).play();
-
                 singleDays.clear();
                 days.getChildren().clear();
                 City city = new City((CityText.getText()).replace(" ", "+"));
-                String weather = city.checkWeather();
-                if (weather.equals("Rain"))
-                {
-
-
-                }
-                int hour = city.checkHour();
-                if (hour > 6 && hour < 20)
-                {
-
-
-                }
-                else
-                {
-
-                }
                 singleDays.addAll(city.getDays());
+                try {
+                    if (mainGridPane.getChildren().get(1) != null)
+                        mainGridPane.getChildren().remove(1);
+                } catch (IndexOutOfBoundsException e) {
+
+                }
                 for (int i = 0; i < singleDays.size(); i++) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/singleday.fxml"));
                     Pane pane = null;
@@ -157,34 +86,73 @@ public class Controller {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-
                     SingleDay day = singleDays.get(i);
                     SingleDayNode controller = loader.getController();
                     controller.setDay(day);
                     days.getChildren().add(pane);
                     new FadeInLeft(days).play();
                     CityText.setText("");
+                    controller.getPane().setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            try {
+                                if (mainGridPane.getChildren().get(1) != null)
+                                    mainGridPane.getChildren().remove(1);
+                            } catch (IndexOutOfBoundsException ef) {
 
-            }
+                            }
+                            FXMLLoader dloader = new FXMLLoader(getClass().getResource("/details.fxml"));
+                            Pane pane = null;
+                            try {
+                                pane = dloader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            pane.setPrefWidth(mainGridPane.getPrefWidth());
+                            DetailsController controller2 = dloader.getController();
+                            controller2.setDetails(controller.getDay(), city);
+                            pane.setPrefWidth(mainGridPane.getPrefWidth());
+                            mainGridPane.add(pane, 1, 1);
+                            try {
+                                controller2.playAnimations();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+                FXMLLoader dloader = new FXMLLoader(getClass().getResource("/details.fxml"));
+                Pane pane = null;
+                try {
+                    pane = dloader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                pane.setPrefWidth(mainGridPane.getPrefWidth());
+                DetailsController controller = dloader.getController();
+                controller.setDetails(singleDays.get(0), city);
+                pane.setPrefWidth(mainGridPane.getPrefWidth());
+                mainGridPane.add(pane, 1, 1);
+                controller.playAnimations();
+            } catch (JSONException | InterruptedException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "City " + CityText.getText() + " not found.", ButtonType.OK);
+                alert.showAndWait();
+                new FadeInLeft(days).play();
+                try {
+                    if (mainGridPane.getChildren().get(1) != null)
+                        mainGridPane.getChildren().remove(1);
+                } catch (IndexOutOfBoundsException ef) {
 
-
-
-            }
-                catch (org.json.JSONException e){
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "City " + CityText.getText() + " not found.", ButtonType.OK);
-                    alert.showAndWait();
+                }
             }
 
 
         }));
 
-
         spane.setStyle("-fx-background-color: #858df1;");
         days.setStyle("-fx-background-color: #858df1;");
-        //testPane.setStyle("-fx-background-color: #0c0000;");
         spane.setFitToWidth(true);
-
+        mainGridPane.setPrefWidth(bpane.getWidth());
 
     }
 
