@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="bpane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Controller">
+<BorderPane fx:id="bpane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Controller">
    <bottom>
-      <ScrollPane fx:id="spane" prefHeight="200.0" prefWidth="634.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER" styleClass="corner">
+      <ScrollPane fx:id="spane" prefHeight="200.0" prefWidth="1028.0" styleClass="corner" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
             <HBox fx:id="days" prefHeight="185.0" prefWidth="636.0" />
          </content>
@@ -28,11 +22,11 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="CityText" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="230.0" promptText="Enter the city name and press Enter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" styleClass="text-field" />
+            <TextField fx:id="CityText" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="230.0" promptText="Enter the city name and press Enter" styleClass="text-field" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </center>
    <top>
-      <ChoiceBox fx:id="LanguageBox" prefHeight="25.0" prefWidth="81.0" BorderPane.alignment="TOP_LEFT" styleClass="choice-box" />
+      <ChoiceBox fx:id="LanguageBox" prefHeight="25.0" prefWidth="81.0" styleClass="choice-box" BorderPane.alignment="TOP_LEFT" />
    </top>
 </BorderPane>

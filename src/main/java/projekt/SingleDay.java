@@ -11,8 +11,9 @@ public class SingleDay {
     private String description;
     private int pressure;
     private int humidity;
+    private String weatherPL;
 
-    public SingleDay(int month, int day, int temperature, int hour, String weather, String description, int pressure, int humidity)
+    public SingleDay(int month, int day, int temperature, int hour, String weather, String description, int pressure, int humidity, String weatherPL)
     {
         this.month = month;
         this.day = day;
@@ -23,6 +24,7 @@ public class SingleDay {
         giveURL();
         this.pressure = pressure;
         this.humidity = humidity;
+        this.weatherPL = weatherPL;
     }
 
     private void giveURL()
@@ -126,4 +128,13 @@ public class SingleDay {
     public String pressureToString(){return Integer.toString(this.pressure) + "hPa";}
 
     public String humidityToString(){return Integer.toString(this.humidity) + "%";}
+
+    public String getDescription()
+    {
+        return description;
+    }
+    public String getWeatherPL()
+    {
+        return weatherPL;
+    }
 }

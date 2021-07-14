@@ -26,6 +26,7 @@ public class City {
     boolean isCloudy;
     String weather;
     int hour;
+    String weatherPL;
     //static SVGPath githubIcon;
 
     public City(String name) {
@@ -52,13 +53,27 @@ public class City {
                 .getBody()
                 .toString();
         JSONObject json = new JSONObject(response);
+
+        String responsePL = Unirest.get("http://api.openweathermap.org/data/2.5/forecast?q=" + name + "&lang=pl&appid=155f76b65fa0f6d8645d3e7df760d4c3")
+                .asJson()
+                .getBody()
+                .toString();
+        JSONObject jsonPL = new JSONObject(responsePL);
+
         long timezone = json.getJSONObject("city").getLong("timezone");
         weather = json.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("main");
+
         checkWeather();
 
+
         JSONArray list = json.getJSONArray("list");
+        JSONArray listPL = jsonPL.getJSONArray("list");
         for (int i = 0; i < list.length(); i++) {
+
             JSONObject object = list.getJSONObject(i);
+            JSONObject objectPL = listPL.getJSONObject(i);
+            weatherPL = jsonPL.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("description");
+
             double temp = object.getJSONObject("main").getDouble("temp");
             int temperature = (int) (temp - 273.15);
             long time = object.getLong("dt");
@@ -72,7 +87,7 @@ public class City {
             String description = object.getJSONArray("weather").getJSONObject(0).getString("description");
             int pressure = object.getJSONObject("main").getInt("pressure");
             int humidity = object.getJSONObject("main").getInt("humidity");
-            days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY), weatherr, description, pressure, humidity));
+            days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY), weatherr, description, pressure, humidity,weatherPL));
         }
 
     }

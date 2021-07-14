@@ -59,15 +59,21 @@ public class Controller {
         LanguageBox.setOnAction((event) ->
         {
             if ((LanguageBox.getValue()).equals("Polski")) {
+                language = "Polski";
                 CityText.setPromptText("Wybierz miasto i wcisnij Enter");
                 Main.mainStage.setTitle("Aplikacja pogodowa");
             } else {
+                language = "English";
                 CityText.setPromptText("Enter the city name and press Enter");
                 Main.mainStage.setTitle("Weather Application");
+
             }
+
+
         });
         CityText.setTooltip(new Tooltip("200 thousand cities supported!"));
         CityText.setOnAction((actionEvent -> {
+
 
 
             try {
@@ -76,6 +82,7 @@ public class Controller {
                 singleDays.clear();
                 days.getChildren().clear();
                 City city = new City((CityText.getText()).replace(" ", "+"));
+
                 singleDays.addAll(city.getDays());
                 try {
                     if (mainGridPane.getChildren().get(1) != null)
@@ -136,7 +143,7 @@ public class Controller {
                 pane.setPrefWidth(mainGridPane.getPrefWidth());
                 DetailsController controller = dloader.getController();
                 controller.setDetails(singleDays.get(0), city);
-                pane.setPrefWidth(mainGridPane.getPrefWidth());
+                //pane.setPrefWidth(mainGridPane.getPrefWidth());
                 mainGridPane.add(pane, 1, 1);
                 controller.playAnimations();
             } catch (JSONException | InterruptedException e) {

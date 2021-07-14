@@ -37,7 +37,7 @@ public class DetailsController implements Initializable {
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         Font font = new Font("projekt/fonts/FuturaLightFont.ttf", 30);
         city.setFont(font);
-        weathertype.setFont(font);
+        //weathertype.setFont(font);
         Font font2 = new Font("projekt/fonts/FuturaLightFont.ttf", 20);
         day.setFont(font2);
         temp.setFont(font2);
@@ -54,7 +54,7 @@ public class DetailsController implements Initializable {
                 image.setImage(new Image(day.getImageURL().replace("100", "")));
                 city.setText("City: " + acity.nameToString());
                 temp.setText("Temperature: " + day.tempToString());
-                weathertype.setText("Weather: " + day.getWeather());
+                weathertype.setText("Weather: " + day.getDescription());
                 this.day.setText("Date: " + day.hourToString() + ", " + day.dateToString());
                 humidity.setText("Humidity: " + day.humidityToString());
                 airpress.setText("Air pressure: " + day.pressureToString());
@@ -64,10 +64,11 @@ public class DetailsController implements Initializable {
         {
             if(day.getImageURL() != null)
             {
+
                 image.setImage(new Image(day.getImageURL().replace("100", "")));
                 city.setText("Miasto: " + acity.nameToString());
                 temp.setText("Temperatura: " + day.tempToString());
-                weathertype.setText("Pogoda: " + day.getWeather());
+                weathertype.setText("Pogoda: " + day.getWeatherPL());
                 this.day.setText("Data: " + day.hourToString() + ", " + day.dateToString());
                 humidity.setText("Wilgotność: " + day.humidityToString());
                 airpress.setText("Ciśnienie: " + day.pressureToString());
