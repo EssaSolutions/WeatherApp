@@ -14,10 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 public class City {
     String name;
@@ -64,9 +61,9 @@ public class City {
             JSONObject object = list.getJSONObject(i);
             double temp = object.getJSONObject("main").getDouble("temp");
             int temperature = (int) (temp - 273.15);
-            long time = Integer.toUnsignedLong(object.getInt("dt"));
+            long time = object.getLong("dt");
             Date date = new Date((time + timezone) * 1000);
-            Calendar calendar = GregorianCalendar.getInstance();
+            Calendar calendar = GregorianCalendar.getInstance(TimeZone.getTimeZone("UTC"));
             calendar.setTime(date);
             hour = calendar.get(Calendar.HOUR_OF_DAY);
 
