@@ -30,6 +30,9 @@ public class Controller {
     static ArrayList<String> weatherImgs;
 
 
+    static String language;
+
+
     @FXML
     HBox days;
 
@@ -49,6 +52,7 @@ public class Controller {
     BorderPane bpane;
 
     public void initialize() throws Exception {
+
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
@@ -67,6 +71,7 @@ public class Controller {
 
 
             try {
+                language = LanguageBox.getValue();
                 new FadeOutLeft(days).play();
                 singleDays.clear();
                 days.getChildren().clear();
@@ -154,6 +159,10 @@ public class Controller {
         spane.setFitToWidth(true);
         mainGridPane.setPrefWidth(bpane.getWidth());
 
+    }
+    public String getLanguage()
+    {
+        return LanguageBox.getValue();
     }
 
 

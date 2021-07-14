@@ -17,6 +17,8 @@ import static java.lang.Thread.sleep;
 
 public class DetailsController implements Initializable {
 
+    String language;
+
     @FXML Pane mainPane;
     @FXML HBox hbox;
     @FXML VBox vbox1;
@@ -44,15 +46,34 @@ public class DetailsController implements Initializable {
     }
 
     public void setDetails(SingleDay day, City acity){
-        if(day.getImageURL() != null){
-            image.setImage(new Image(day.getImageURL().replace("100", "")));
-            city.setText("City: " + acity.nameToString());
-            temp.setText("Temperature: " + day.tempToString());
-            weathertype.setText("Type: " + day.getWeather());
-            this.day.setText("Date: " + day.hourToString() + ", " + day.dateToString());
-            humidity.setText("Humidity: " + day.humidityToString());
-            airpress.setText("Air pressure: " + day.pressureToString());
+        language = Controller.language;
+        if (language.equals("English"))
+        {
+            if(day.getImageURL() != null)
+            {
+                image.setImage(new Image(day.getImageURL().replace("100", "")));
+                city.setText("City: " + acity.nameToString());
+                temp.setText("Temperature: " + day.tempToString());
+                weathertype.setText("Weather: " + day.getWeather());
+                this.day.setText("Date: " + day.hourToString() + ", " + day.dateToString());
+                humidity.setText("Humidity: " + day.humidityToString());
+                airpress.setText("Air pressure: " + day.pressureToString());
+            }
         }
+        else
+        {
+            if(day.getImageURL() != null)
+            {
+                image.setImage(new Image(day.getImageURL().replace("100", "")));
+                city.setText("Miasto: " + acity.nameToString());
+                temp.setText("Temperatura: " + day.tempToString());
+                weathertype.setText("Pogoda: " + day.getWeather());
+                this.day.setText("Data: " + day.hourToString() + ", " + day.dateToString());
+                humidity.setText("Wilgotność: " + day.humidityToString());
+                airpress.setText("Ciśnienie: " + day.pressureToString());
+            }
+        }
+
     }
 
     public void playAnimations() throws InterruptedException {
