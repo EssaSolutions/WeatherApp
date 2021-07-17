@@ -25,8 +25,8 @@ public class Main extends Application
         root.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 0% 40%, #E0FFFF, #858df1);");
         primaryStage.getIcons().add(new Image("projekt/images/weatherico.png"));
         primaryStage.setScene(scene1);
-        primaryStage.setMinHeight(880);
-        primaryStage.setMinWidth(1170);
+        primaryStage.setMinHeight(800);
+        primaryStage.setMinWidth(1100);
         primaryStage.show();
     }
 

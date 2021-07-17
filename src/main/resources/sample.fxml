@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="bpane" prefHeight="880.0" prefWidth="1170.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Controller">
+<BorderPane fx:id="bpane" prefHeight="800.0" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Controller">
    <bottom>
       <ScrollPane fx:id="spane" prefHeight="200.0" prefWidth="1028.0" styleClass="corner" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>

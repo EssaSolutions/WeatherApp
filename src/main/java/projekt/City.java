@@ -14,6 +14,7 @@ public class City {
     String weather;
     int hour;
     String weatherPL;
+    String key = "";
 
     public City(String name) {
         this.name = name;
@@ -31,7 +32,7 @@ public class City {
 
 
     private void createList() throws UnirestException {
-        String response = Unirest.get("http://api.openweathermap.org/data/2.5/forecast?q=" + name + "&appid=155f76b65fa0f6d8645d3e7df760d4c3")
+        String response = Unirest.get("http://api.openweathermap.org/data/2.5/forecast?q=" + name + "&appid=" + key)
                 .asJson()
                 .getBody()
                 .toString();
