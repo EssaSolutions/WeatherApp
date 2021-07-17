@@ -123,7 +123,6 @@ public class SingleDay {
         return this.imageURL;
     }
 
-    public String getWeather() {return weather;}
 
     public String pressureToString(){return Integer.toString(this.pressure) + "hPa";}
 

@@ -1,21 +1,4 @@
 
-
-
-.weatherImages
-{
-
-}
-
-/*.text-field {*/
-/*    -fx-background-color: #a9a9a9 , white , white;*/
-/*    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;*/
-/*}*/
-
-/*.text-field:focused {*/
-/*    -fx-background-color: #a9a9a9 , white , white;*/
-/*    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;*/
-/*}*/
-
 .text-field {
     -fx-background-color: -fx-text-box-border, -fx-background ;
     -fx-background-insets: 0, 0 0 1 0 ;
@@ -68,4 +51,23 @@
 }
 
 
-   .choice-box > .label { -fx-text-fill: white; }
+.choice-box > .label { -fx-text-fill: white; }
+
+.textt
+{
+
+    -fx-font-size: 20;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: "lightcyan";
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, lightcyan, 3, 0.1, 1, 1)
+}
+.textt2
+{
+
+    -fx-font-size: 20;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: "white";
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, white, 3, 0.1, 1, 1)
+}

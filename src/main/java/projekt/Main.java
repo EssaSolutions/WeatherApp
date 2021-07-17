@@ -1,9 +1,7 @@
 package projekt;
 
 import javafx.application.Application;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -27,6 +25,8 @@ public class Main extends Application
         root.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 0% 40%, #E0FFFF, #858df1);");
         primaryStage.getIcons().add(new Image("projekt/images/weatherico.png"));
         primaryStage.setScene(scene1);
+        primaryStage.setMinHeight(880);
+        primaryStage.setMinWidth(1170);
         primaryStage.show();
     }
 

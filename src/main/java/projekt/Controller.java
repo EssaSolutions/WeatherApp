@@ -4,32 +4,18 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.FadeInLeft;
 import animatefx.animation.FadeOut;
 import animatefx.animation.FadeOutLeft;
-import javafx.beans.property.ReadOnlyDoubleProperty;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.SVGPath;
-import javafx.util.Duration;
 import org.json.JSONException;
 
-import javax.swing.*;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class Controller {
-    static ArrayList<String> weatherImgs;
-
-
     static String language;
 
 
@@ -166,10 +152,6 @@ public class Controller {
         spane.setFitToWidth(true);
         mainGridPane.setPrefWidth(bpane.getWidth());
 
-    }
-    public String getLanguage()
-    {
-        return LanguageBox.getValue();
     }
 
 

@@ -9,11 +9,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static java.lang.Thread.sleep;
 
 public class DetailsController implements Initializable {
 
@@ -37,7 +35,6 @@ public class DetailsController implements Initializable {
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         Font font = new Font("projekt/fonts/FuturaLightFont.ttf", 30);
         city.setFont(font);
-        //weathertype.setFont(font);
         Font font2 = new Font("projekt/fonts/FuturaLightFont.ttf", 20);
         day.setFont(font2);
         temp.setFont(font2);
