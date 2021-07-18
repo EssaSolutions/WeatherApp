@@ -14,7 +14,7 @@ public class City {
     String weather;
     int hour;
     String weatherPL;
-    String key = "";
+    String key = "155f76b65fa0f6d8645d3e7df760d4c3";
 
     public City(String name) {
         this.name = name;
@@ -54,7 +54,7 @@ public class City {
         for (int i = 0; i < list.length(); i++) {
 
             JSONObject object = list.getJSONObject(i);
-            weatherPL = jsonPL.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("description");
+            weatherPL = jsonPL.getJSONArray("list").getJSONObject(i).getJSONArray("weather").getJSONObject(0).getString("description");
             double temp = object.getJSONObject("main").getDouble("temp");
             int temperature = (int) (temp - 273.15);
             long time = object.getLong("dt");

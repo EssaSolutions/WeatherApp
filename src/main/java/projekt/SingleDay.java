@@ -90,9 +90,6 @@ public class SingleDay {
             }
     }
 
-    public int getTemperature() {
-        return this.temperature;
-    }
 
     public String tempToString() {
         return Integer.toString(temperature) + "°C";

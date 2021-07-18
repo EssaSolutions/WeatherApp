@@ -129,7 +129,6 @@ public class Controller {
                 pane.setPrefWidth(mainGridPane.getPrefWidth());
                 DetailsController controller = dloader.getController();
                 controller.setDetails(singleDays.get(0), city);
-                //pane.setPrefWidth(mainGridPane.getPrefWidth());
                 mainGridPane.add(pane, 1, 1);
                 controller.playAnimations();
             } catch (JSONException | InterruptedException e) {
