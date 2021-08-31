@@ -14,7 +14,7 @@ public class City {
     String weather;
     int hour;
     String weatherPL;
-    String key = "155f76b65fa0f6d8645d3e7df760d4c3";
+    String key = "APIKEY";
 
     public City(String name) {
         this.name = name;
@@ -38,7 +38,7 @@ public class City {
                 .toString();
         JSONObject json = new JSONObject(response);
 
-        String responsePL = Unirest.get("http://api.openweathermap.org/data/2.5/forecast?q=" + name + "&lang=pl&appid=155f76b65fa0f6d8645d3e7df760d4c3")
+        String responsePL = Unirest.get("http://api.openweathermap.org/data/2.5/forecast?q=" + name + "&lang=pl&appid=" + key)
                 .asJson()
                 .getBody()
                 .toString();
