@@ -40,6 +40,11 @@ public class SingleDay {
             {
                 this.imageURL = "/projekt/images/cloudyy100.png";
             }
+            else if(weather.equals("Snow"))
+            {
+                this.imageURL = "/projekt/images/snowy100.png";
+            }
+
             else if(weather.equals("Clouds"))
             {
                 if (description.equals("scattered clouds") || description.equals("few clouds"))
@@ -51,6 +56,7 @@ public class SingleDay {
                     this.imageURL = "/projekt/images/cloudy100.png";
 
                 }
+
                 else
                 {
                     this.imageURL = "/projekt/images/cloud100.png";
@@ -70,6 +76,11 @@ public class SingleDay {
 
                     this.imageURL = "/projekt/images/rain100.png";
                 }
+                else if(weather.equals("Snow"))
+                {
+                    this.imageURL = "/projekt/images/snowy100.png";
+                }
+
                 else if(weather.equals("Clouds"))
                 {
                     if (description.equals("scattered clouds") || description.equals("few clouds"))
