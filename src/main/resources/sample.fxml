@@ -29,4 +29,12 @@
    <top>
       <ChoiceBox fx:id="LanguageBox" prefHeight="25.0" prefWidth="81.0" styleClass="choice-box" BorderPane.alignment="TOP_LEFT" />
    </top>
+   <right>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="slideShowButton" mnemonicParsing="false" text="Showreel" styleClass="buttons" />
+            <Button fx:id="StopButton" mnemonicParsing="false" text="STOP" styleClass="buttons" />
+         </children>
+      </VBox>
+   </right>
 </BorderPane>

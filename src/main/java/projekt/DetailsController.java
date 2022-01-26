@@ -3,6 +3,7 @@ package projekt;
 import animatefx.animation.FadeInLeft;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,6 +41,7 @@ public class DetailsController implements Initializable {
         temp.setFont(font2);
         humidity.setFont(font2);
         airpress.setFont(font2);
+
     }
 
     public void setDetails(SingleDay day, City acity){

@@ -4,6 +4,7 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.FadeInLeft;
 import animatefx.animation.FadeOut;
 import animatefx.animation.FadeOutLeft;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,9 +15,14 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 public class Controller {
     static String language;
+    public Object lock = new Object ();
 
 
     @FXML
@@ -36,9 +42,16 @@ public class Controller {
 
     @FXML
     BorderPane bpane;
+    @FXML
+    Button slideShowButton;
+
+    @FXML
+    Button StopButton;
 
     public void initialize() throws Exception {
 
+        slideShowButton.setVisible(false);
+        StopButton.setVisible(false);
         ArrayList<SingleDay> singleDays = new ArrayList<SingleDay>();
         LanguageBox.getItems().addAll("Polski", "English");
         LanguageBox.setValue("English");
@@ -63,6 +76,8 @@ public class Controller {
 
 
             try {
+                slideShowButton.setVisible(true);
+                StopButton.setVisible(true);
                 language = LanguageBox.getValue();
                 new FadeOutLeft(days).play();
                 singleDays.clear();
@@ -116,9 +131,45 @@ public class Controller {
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
+
+
                         }
+
                     });
+                    slideShowButton.setOnAction((actionEvent2 ->
+                    {
+
+                        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+                        ScheduledFuture files= executorService.scheduleAtFixedRate(new Runnable() {
+                            @Override
+                            public void run()
+                            {
+                                for (double ii = 0; ii< 1000 ; ii++)
+                                {
+                                    try {
+                                        double tmp = ii/1000;
+                                        spane.setHvalue(tmp);
+                                        Thread.sleep(15);
+                                    } catch (InterruptedException e) {
+                                        break;
+                                    }
+                                }
+                            }
+                        }, 0, 200, TimeUnit.MILLISECONDS);
+
+                        StopButton.setOnAction((ActionEvent ->
+                        {
+                            spane.setHvalue(0);
+                            files.cancel(true);
+
+
+
+
+                        }));
+                    }));
                 }
+
+
                 FXMLLoader dloader = new FXMLLoader(getClass().getResource("/details.fxml"));
                 Pane pane = null;
                 try {
@@ -152,6 +203,7 @@ public class Controller {
         mainGridPane.setPrefWidth(bpane.getWidth());
 
     }
+
 
 
 }
