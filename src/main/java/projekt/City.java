@@ -67,7 +67,7 @@ public class City {
             int pressure = object.getJSONObject("main").getInt("pressure");
             int humidity = object.getJSONObject("main").getInt("humidity");
             days.add(new SingleDay(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), temperature, calendar.get(Calendar.HOUR_OF_DAY), weatherr, description, pressure, humidity,weatherPL));
-            System.out.println(weatherr);
+            //System.out.println(weatherr);
         }
 
     }

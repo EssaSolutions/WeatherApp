@@ -6,24 +6,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.DetailsController" stylesheets="@style.css">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.DetailsController">
    <children>
       <HBox fx:id="hbox" prefHeight="512.0" prefWidth="1200.0" spacing="10.0">
          <children>
             <ImageView fx:id="image" fitHeight="512.0" fitWidth="512.0" pickOnBounds="true" preserveRatio="true" />
             <VBox fx:id="vbox1" prefHeight="512.0" prefWidth="256.0" spacing="50.0">
                <children>
-                  <Label fx:id="city" text="Label" textFill="WHITE" styleClass="textt2">
+                  <Label fx:id="city" styleClass="textt2" text="Label" textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="day" text="Label" textFill="WHITE" styleClass="textt">
+                  <Label fx:id="day" styleClass="textt" text="Label" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="temp" text="Label" textFill="WHITE" styleClass="textt">
+                  <Label fx:id="temp" styleClass="textt" text="Label" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -31,17 +31,17 @@
                </children></VBox>
             <VBox fx:id="vbox2" prefHeight="512.0" prefWidth="426.0" spacing="50.0">
                <children>
-                  <Label fx:id="weathertype" text="Label" textFill="WHITE" wrapText="true" styleClass="textt2">
+                  <Label fx:id="weathertype" styleClass="textt2" text="Label" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="humidity" text="Label" textFill="WHITE" styleClass="textt">
+                  <Label fx:id="humidity" styleClass="textt" text="Label" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="airpress" text="Label" textFill="WHITE" styleClass="textt">
+                  <Label fx:id="airpress" styleClass="textt" text="Label" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
