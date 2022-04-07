@@ -53,8 +53,11 @@ public class DetailsController implements Initializable {
                 temp.setText("Temperature: " + day.tempToString());
                 weathertype.setText("Weather: " + day.getDescription());
                 this.day.setText("Date: " + day.hourToString() + ", " + day.dateToString());
-                humidity.setText("Humidity: " + day.humidityToString());
+                //humidity.setText("Humidity: " + day.humidityToString());
                 airpress.setText("Air pressure: " + day.pressureToString());
+                airpress.setText(acity.locCurrency +"/" + acity.inputCurrency + " " + day.pressureToString());
+                humidity.setText("PLN/" + acity.inputCurrency + " " + day.humidityToString());
+
             }
         }
         else

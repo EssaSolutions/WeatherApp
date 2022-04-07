@@ -19,6 +19,7 @@ public class Controller {
     static String language;
 
 
+
     @FXML
     HBox days;
 
@@ -36,6 +37,9 @@ public class Controller {
 
     @FXML
     BorderPane bpane;
+
+    @FXML
+    TextField currencyText;
 
     public void initialize() throws Exception {
 
@@ -67,7 +71,7 @@ public class Controller {
                 new FadeOutLeft(days).play();
                 singleDays.clear();
                 days.getChildren().clear();
-                City city = new City((CityText.getText()).replace(" ", "+"));
+                City city = new City((CityText.getText()).replace(" ", "+"),currencyText.getText());
 
                 singleDays.addAll(city.getDays());
                 try {

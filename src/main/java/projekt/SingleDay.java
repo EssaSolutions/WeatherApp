@@ -9,11 +9,11 @@ public class SingleDay {
     private String imageURL;
     private String weather;
     private String description;
-    private int pressure;
-    private int humidity;
+    private Double pressure;
+    private Double humidity;
     private String weatherPL;
 
-    public SingleDay(int month, int day, int temperature, int hour, String weather, String description, int pressure, int humidity, String weatherPL)
+    public SingleDay(int month, int day, int temperature, int hour, String weather, String description, Double pressure, Double humidity, String weatherPL)
     {
         this.month = month;
         this.day = day;
@@ -132,9 +132,9 @@ public class SingleDay {
     }
 
 
-    public String pressureToString(){return Integer.toString(this.pressure) + "hPa";}
+    public String pressureToString(){return Double.toString(this.pressure);}
 
-    public String humidityToString(){return Integer.toString(this.humidity) + "%";}
+    public String humidityToString(){return Double.toString(this.humidity);}
 
     public String getDescription()
     {
